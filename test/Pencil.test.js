@@ -10,4 +10,8 @@ describe('Pencil', () => {
   it('has a .durability property', () => {
     expect(new Pencil()).to.haveOwnProperty('durability')
   })
+
+  it('has a .length property', () => {
+    expect(new Pencil()).to.haveOwnProperty('length')
+  })
 })
