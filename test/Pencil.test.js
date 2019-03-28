@@ -29,4 +29,13 @@ describe('Pencil', () => {
       expect(new Pencil().durability).to.equal(1000)
     })
   })
+
+  describe('sharpness', () => {
+    it('is initially equal to durability', () => {
+      let pencil = new Pencil()
+      expect(pencil.durability).to.equal(pencil.sharpness)
+      pencil = new Pencil(30)
+      expect(pencil.durability).to.equal(pencil.sharpness)
+    })
+  })
 })

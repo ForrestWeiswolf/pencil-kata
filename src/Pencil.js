@@ -7,7 +7,7 @@
  */
 function Pencil(durability = 1000) {
   this.durability = durability
-  this.sharpness = 1000
+  this.sharpness = durability
   this.length = 100
 }
 
