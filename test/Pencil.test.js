@@ -24,5 +24,9 @@ describe('Pencil', () => {
       expect(new Pencil(22).durability).to.equal(22)
       expect(new Pencil(90).durability).to.equal(90)
     })
+
+    it('defaults to 1000', () => {
+      expect(new Pencil().durability).to.equal(1000)
+    })
   })
 })
