@@ -1,5 +1,6 @@
-const Pencil = require('./src/pencil')
+const Pencil = require('./src/Pencil')
+const Paper = require('./src/Paper')
 
 module.exports = {
-  Pencil,
+  Pencil, Paper
 }
