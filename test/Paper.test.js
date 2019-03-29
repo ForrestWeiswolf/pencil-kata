@@ -10,4 +10,10 @@ describe('Paper', () => {
   it('has a .text property', () => {
     expect(new Paper()).to.haveOwnProperty('text')
   })
+
+  describe('Paper.addText', () => {
+    it('Is a method', () => {
+      expect(new Paper().addText).to.be.a('function')
+    })
+  })
 })

@@ -7,4 +7,8 @@ function Paper() {
   this.text = ''
 }
 
+Paper.prototype.addText = function () {
+
+}
+
 module.exports = Paper
