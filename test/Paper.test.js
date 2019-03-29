@@ -19,5 +19,12 @@ describe('Paper', () => {
     it('Is a method', () => {
       expect(new Paper().addText).to.be.a('function')
     })
+
+    it('Can add text to the beginning of a blank sheet of paper', () => {
+      const textToAdd = 'The Waystone Inn lay in silence, and it was a silence of three parts.'
+      const sheet = new Paper()
+      sheet.addText(textToAdd, 0)
+      expect(sheet.text).to.equal(textToAdd)
+    })
   })
 })
