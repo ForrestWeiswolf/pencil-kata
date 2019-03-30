@@ -26,5 +26,12 @@ describe('Paper', () => {
       sheet.addText(textToAdd, 0)
       expect(sheet.text).to.equal(textToAdd)
     })
+
+    it('Can fill in a space in a sheet of paper with preexisting text', () => {
+      const sheet = new Paper()
+      sheet.addText('The      obvious part was a hollow, echoing quiet', 0)
+      sheet.addText('most', 4)
+      expect(sheet.text).to.equal('The most obvious part was a hollow, echoing quiet')
+    })
   })
 })

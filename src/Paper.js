@@ -7,8 +7,8 @@ function Paper() {
   this.text = ''
 }
 
-Paper.prototype.addText = function (text) {
-  this.text = text
+Paper.prototype.addText = function (textToAdd, index) {
+  this.text = this.text.slice(0, index) + textToAdd + this.text.slice(index + textToAdd.length)
 }
 
 module.exports = Paper
