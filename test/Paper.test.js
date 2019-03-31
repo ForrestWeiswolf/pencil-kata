@@ -73,5 +73,11 @@ describe('Paper', () => {
     it('Throws an error with a message that says what the invalid end value was', () => {
       expect(() => {sheet.removeText(0, 2)}).to.throw(/2/)
     })
+
+    it('Throws a informative RangeError if end is before start', () => {
+      sheet.addText('set the inn’s sign creaking on its hooks, and brushed the silence down the road like trailing autumn leaves.')
+      expect(() => {sheet.removeText(12, 2)}).to.throw(RangeError)
+    expect(() => {sheet.removeText(12, 2)}).to.throw(/end.+start/i)
+    })
   })
 })

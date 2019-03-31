@@ -47,6 +47,8 @@ Paper.prototype.addText = function (textToAdd, index) {
 Paper.prototype.removeText = function (start, end) {
   if(end > this.text.length){
     throw new RangeError(`Tried to remove text up to index ${end}, when this paper only has text of length ${this.text.length}`)
+  } else if(end < start){
+    throw new RangeError(`End value ${end} passed to removeText was less than start value ${start}.`)
   }
 
   const spaces = new Array(end - start).fill(' ').join('')
