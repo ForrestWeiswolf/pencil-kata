@@ -42,7 +42,11 @@ Paper.prototype.addText = function (textToAdd, index) {
     this.text.slice(index + textToAdd.length)
 }
 
-Paper.prototype.removeText = function () {}
+Paper.prototype.removeText = function (start, end) {
+  const spaces = new Array(end - start).fill(' ').join('')
+  this.text = this.text.slice(0, start) + spaces + this.text.slice(end)
+
+}
 
 
 module.exports = Paper

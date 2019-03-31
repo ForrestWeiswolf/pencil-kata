@@ -48,5 +48,11 @@ describe('Paper', () => {
     it('Is a method', () => {
       expect(sheet.removeText).to.be.a('function')
     })
+
+    it('Replaces text with spaces between the specified indices', () => {
+      sheet.addText('If there had been a wind it would have sighed through the trees')
+      sheet.removeText(20, 24)
+      expect(sheet.text).to.equal('If there had been a      it would have sighed through the trees')
+    })
   })
 })
