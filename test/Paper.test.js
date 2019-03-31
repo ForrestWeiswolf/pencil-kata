@@ -37,10 +37,15 @@ describe('Paper', () => {
       expect(sheet.text).to.equal('The most obvious part was a hollow, echoing quiet')
     })
 
-    it('produces "@" symbols when added text overlaps preexisting text', () => {
+    it('Produces "@" symbols when added text overlaps preexisting text', () => {
       sheet.addText('mad  of things that were lacking', 0)
       sheet.addText('e by', 3)
       expect(sheet.text).to.equal('made @@ things that were lacking')
+    })
+
+    it('Returns the paper (for method chaining)', () => {
+      const returnVal = sheet.addText('made of things that were lacking.', 0)
+      expect(returnVal).to.equal(sheet)
     })
   })
 
