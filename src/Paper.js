@@ -47,6 +47,8 @@ Paper.prototype.addText = function (textToAdd, index) {
 Paper.prototype.removeText = function (start, end) {
   const spaces = new Array(end - start).fill(' ').join('')
   this.text = this.text.slice(0, start) + spaces + this.text.slice(end)
+
+  return this
 }
 
 
