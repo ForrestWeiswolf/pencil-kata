@@ -43,4 +43,10 @@ describe('Paper', () => {
       expect(sheet.text).to.equal('made @@ things that were lacking')
     })
   })
+
+  describe('Paper.removeText', () => {
+    it('Is a method', () => {
+      expect(sheet.removeText).to.be.a('function')
+    })
+  })
 })

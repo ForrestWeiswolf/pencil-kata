@@ -42,4 +42,7 @@ Paper.prototype.addText = function (textToAdd, index) {
     this.text.slice(index + textToAdd.length)
 }
 
+Paper.prototype.removeText = function () {}
+
+
 module.exports = Paper
