@@ -44,6 +44,10 @@ Paper.prototype.addText = function (textToAdd, index) {
   return this
 }
 
+/** Remove text from a sheet of paper, replacing it with spces.
+ * @param {start} [number] - Index at which to start removing text (inclusive)
+ * @param {end} [number] - Index at which to stop removing text (exclusive)
+ */
 Paper.prototype.removeText = function (start, end) {
   if(end > this.text.length){
     throw new RangeError(`Tried to remove text up to index ${end}, when this paper only has text of length ${this.text.length}`)
