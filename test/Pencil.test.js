@@ -38,4 +38,11 @@ describe('Pencil', () => {
       expect(pencil.durability).to.equal(pencil.sharpness)
     })
   })
+
+  describe('.write', () => {
+    it('is a method', () => {
+      let pencil = new Pencil()
+      expect(pencil.write).to.be.a('function')
+    })
+  })
 })
