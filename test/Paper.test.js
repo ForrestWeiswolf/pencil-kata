@@ -65,5 +65,13 @@ describe('Paper', () => {
       const returnVal = sheet.removeText(20, 24)
       expect(returnVal).to.equal(sheet)
     })
+
+    it('Throws a RangeError if trying to remove text that isn\'t there', () => {
+      expect(() => {sheet.removeText(0, 2)}).to.throw(RangeError)
+    })
+
+    it('Throws an error with a message that says what the invalid end value was', () => {
+      expect(() => {sheet.removeText(0, 2)}).to.throw(/2/)
+    })
   })
 })
