@@ -49,12 +49,18 @@ describe('Pencil', () => {
     beforeEach(() => {
       fakePaper = {
         addText: sinon.fake(),
-        removeText: sinon.fake()
+        removeText: sinon.fake(),
+        text: ''
       }
     })
 
     it('is a method', () => {
       expect(pencil.write).to.be.a('function')
+    })
+
+    it('Takes a Paper as second argument and calls its .addText method', () => {
+      pencil.write('', fakePaper)
+      expect(fakePaper.addText.called).to.equal(true)
     })
   })
 })
