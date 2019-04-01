@@ -122,5 +122,11 @@ describe('Pencil', () => {
       pencil.write('aA', fakePaper)
       expect(fakePaper.addText.getCall(0).args[0]).to.equal('  ')
     })
+
+    it('Won\'t end up with negative sharpness', () => {
+      pencil = new Pencil(0)
+      pencil.write('aA', fakePaper)
+      expect(pencil.sharpness).to.equal(0)
+    })
   })
 })
