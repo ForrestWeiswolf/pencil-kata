@@ -62,5 +62,11 @@ describe('Pencil', () => {
       pencil.write('', fakePaper)
       expect(fakePaper.addText.called).to.equal(true)
     })
+
+    it('Adds text passed as first argument', () => {
+      const textToWrite = 'If there had been a crowd, even a handful of men inside the inn,'
+      pencil.write(textToWrite, fakePaper)
+      expect(fakePaper.addText.getCall(0).args[0]).to.equal(textToWrite)
+    })
   })
 })
