@@ -14,6 +14,8 @@ function Pencil(durability = 1000) {
 Pencil.prototype.write = function (str, paper) {
   if (this.sharpness > 0) {
     paper.addText(str, paper.text.length)
+  } else {
+    paper.addText(new Array(str.length).fill(' ').join(''), paper.text.length)
   }
 
   // Reduce sharpness by 2 if str.toUpperCase() === str, otherwise reduce by 1

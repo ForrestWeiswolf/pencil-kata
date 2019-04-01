@@ -117,10 +117,10 @@ describe('Pencil', () => {
       expect(pencil.sharpness).to.equal(27)
     })
 
-    it('Doesn\'t write when it is dull', () => {
+    it('Writes only spaces when it is dull', () => {
       pencil = new Pencil(0)
-      pencil.write('the clatter and clamour one expects', fakePaper)
-      expect(fakePaper.addText.called).to.equal(false)
+      pencil.write('aA', fakePaper)
+      expect(fakePaper.addText.getCall(0).args[0]).to.equal('  ')
     })
   })
 })
