@@ -31,6 +31,16 @@ describe('Paper', () => {
       expect(sheet.text).to.equal(textToAdd)
     })
 
+    it('Can add text to the end of a sheet of paper with text on it', () => {
+      const textToAddFirst = 'The Waystone Inn lay in silence'
+      const textToAppend = ', and it was a silence of three parts.'
+
+      sheet.addText(textToAddFirst, 0)
+      sheet.addText(textToAppend, sheet.text.length)
+
+      expect(sheet.text).to.equal(textToAddFirst + textToAppend)
+    })
+
     it('Can fill in a space in a sheet of paper with preexisting text', () => {
       sheet.addText('The      obvious part was a hollow, echoing quiet', 0)
       sheet.addText('most', 4)
