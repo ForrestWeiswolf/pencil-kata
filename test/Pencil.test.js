@@ -116,5 +116,11 @@ describe('Pencil', () => {
       pencil.write('If ', fakePaper)
       expect(pencil.sharpness).to.equal(27)
     })
+
+    it('Doesn\'t write when it is dull', () => {
+      pencil = new Pencil(0)
+      pencil.write('the clatter and clamour one expects', fakePaper)
+      expect(fakePaper.addText.called).to.equal(false)
+    })
   })
 })
