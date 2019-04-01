@@ -96,5 +96,13 @@ describe('Pencil', () => {
       pencil.write('A', fakePaper)
       expect(pencil.sharpness).to.equal(28)
     })
+
+    it('Doesn\'t reduces the pencil\'s sharpness when writing whitespace', () => {
+      pencil = new Pencil(30)
+      pencil.write(' ', fakePaper)
+      pencil.write('\n', fakePaper)
+      pencil.write('\t', fakePaper)
+      expect(pencil.sharpness).to.equal(30)
+    })
   })
 })

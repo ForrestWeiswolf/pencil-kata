@@ -13,10 +13,13 @@ function Pencil(durability = 1000) {
 
 Pencil.prototype.write = function (str, paper) {
   paper.addText(str, paper.text.length)
-  // Reduce durability by 2 if str.toUpperCase() === str, otherwise reduce by 1
-  // (Non-letter characters will reduce durability by 1 here)
-  // str.toUpperCase() === str is significantly faster that using a regex
-  this.sharpness -= (str.toUpperCase() === str) ? 2 : 1
+
+  if (/\S/.test(str)) {
+    // Reduce durability by 2 if str.toUpperCase() === str, otherwise reduce by 1
+    // (Non-letter characters will reduce durability by 1 here)
+    // str.toUpperCase() === str is significantly faster that using a regex
+    this.sharpness -= (str.toUpperCase() === str) ? 2 : 1
+  }
 }
 
 module.exports = Pencil
