@@ -12,7 +12,7 @@ function Pencil(durability = 1000) {
 }
 
 Pencil.prototype.write = function (str, paper) {
-  paper.addText(str, 0)
+  paper.addText(str, paper.text.length)
 }
 
 module.exports = Pencil

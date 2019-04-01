@@ -74,5 +74,15 @@ describe('Pencil', () => {
       pencil.write(textToWrite, fakePaper)
       expect(fakePaper.addText.getCall(0).args[1]).to.equal(0)
     })
+
+    it('Adds text at the end if the paper already has text', () => {
+      fakePaper.text = 'they would have filled the silence with coversation and laughter, '
+      const lengthOfExistingText = fakePaper.text.length
+
+      const textToWrite = 'the clatter and clamour one expects from a drinking house during the dark hours of the night.'
+      pencil.write(textToWrite, fakePaper)
+
+      expect(fakePaper.addText.getCall(0).args[1]).to.equal(lengthOfExistingText)
+    })
   })
 })
