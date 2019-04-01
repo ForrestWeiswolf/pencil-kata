@@ -84,5 +84,11 @@ describe('Pencil', () => {
 
       expect(fakePaper.addText.getCall(0).args[1]).to.equal(lengthOfExistingText)
     })
+
+    it('Reduces the pencil\'s sharpness by 1 when writing a lowercase letter', () => {
+      pencil = new Pencil(30)
+      pencil.write('a', fakePaper)
+      expect(pencil.sharpness).to.equal(29)
+    })
   })
 })
