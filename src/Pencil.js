@@ -16,9 +16,9 @@ Pencil.prototype.write = function (str, paper) {
 
   if (/\S/.test(str)) {
     // Reduce durability by 2 if str.toUpperCase() === str, otherwise reduce by 1
-    // (Non-letter characters will reduce durability by 1 here)
+    // (Non-letter characters will reduce durability by 2 here)
     // str.toUpperCase() === str is significantly faster that using a regex
-    this.sharpness -= (str.toUpperCase() === str) ? 2 : 1
+    this.sharpness -= (str.toLowerCase() === str) ? 1 : 2
   }
 }
 
