@@ -68,5 +68,11 @@ describe('Pencil', () => {
       pencil.write(textToWrite, fakePaper)
       expect(fakePaper.addText.getCall(0).args[0]).to.equal(textToWrite)
     })
+
+    it('Adds text at index 0 if the paper is blank', () => {
+      const textToWrite = 'they would have filled the silence with coversation and laughter,'
+      pencil.write(textToWrite, fakePaper)
+      expect(fakePaper.addText.getCall(0).args[1]).to.equal(0)
+    })
   })
 })
