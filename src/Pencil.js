@@ -14,12 +14,21 @@ function Pencil(durability = 1000) {
 Pencil.prototype.write = function (str, paper) {
   paper.addText(str, paper.text.length)
 
-  if (/\S/.test(str)) {
-    // Reduce durability by 2 if str.toUpperCase() === str, otherwise reduce by 1
-    // (Non-letter characters will reduce durability by 2 here)
-    // str.toUpperCase() === str is significantly faster that using a regex
-    this.sharpness -= (str.toLowerCase() === str) ? 1 : 2
+  // Reduce sharpness by 2 if str.toUpperCase() === str, otherwise reduce by 1
+  // (Non-letter characters will reduce durability by 2 here)
+  let count = 0
+  let isntSpace = /\S/
+
+  for (let i = 0; i < str.length; i++) {
+    // Comparing str.toLowerCase() to str is significantly faster than using a regex
+    if (str[i].toLowerCase() !== str[i]) {
+      count += 2
+    } else if (isntSpace.test(str[i])) {
+      count += 1
+    }
   }
+
+  this.sharpness -= count
 }
 
 module.exports = Pencil

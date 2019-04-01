@@ -110,5 +110,11 @@ describe('Pencil', () => {
       pencil.write('^', fakePaper)
       expect(pencil.sharpness).to.equal(29)
     })
+
+    it('Reduces sharpness when writing multiple characters', () => {
+      pencil = new Pencil(30)
+      pencil.write('If ', fakePaper)
+      expect(pencil.sharpness).to.equal(27)
+    })
   })
 })
