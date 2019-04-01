@@ -1,5 +1,6 @@
 const { expect } = require('chai')
 const { Pencil } = require('../index')
+const sinon = require('sinon')
 
 describe('Pencil', () => {
   let pencil
@@ -44,6 +45,14 @@ describe('Pencil', () => {
   })
 
   describe('.write', () => {
+    let fakePaper
+    beforeEach(() => {
+      fakePaper = {
+        addText: sinon.fake(),
+        removeText: sinon.fake()
+      }
+    })
+
     it('is a method', () => {
       expect(pencil.write).to.be.a('function')
     })
