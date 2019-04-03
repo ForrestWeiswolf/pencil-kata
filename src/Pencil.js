@@ -11,32 +11,30 @@ function Pencil(durability = 1000) {
   this.length = 100
 }
 
+// Reduce sharpness by 2 if str.toUpperCase() === str, otherwise reduce by 1
+// (Non-letter characters will reduce durability by 1 here)
+// Comparing str.toLowerCase() to str is significantly faster than using a regex
+function getSharpnessCost(char) {
+  if (char.toLowerCase() !== char) {
+    return 2
+  } else {
+    return /\S/.test(char) ? 1 : 0
+  }
+}
+
 Pencil.prototype.write = function (str, paper) {
   let textToAdd = ''
-  let isntSpace = /\S/
+  let sharpnessCost
 
   for (let i = 0; i < str.length; i++) {
-    if (this.sharpness === 0) {
-      break
-    }
-
-    // Reduce sharpness by 2 if str.toUpperCase() === str, otherwise reduce by 1
-    // (Non-letter characters will reduce durability by 1 here)
-    // Comparing str.toLowerCase() to str is significantly faster than using a regex
-    if ((this.sharpness > 1) && str[i].toLowerCase() !== str[i]) {
-      this.sharpness -= 2
-      textToAdd += str[i]
-    } else if (str[i].toLowerCase() !== str[i]) {
-      textToAdd += ' '
-    } else if (isntSpace.test(str[i])) {
-      this.sharpness -= 1
+    sharpnessCost = getSharpnessCost(str[i])
+    if (sharpnessCost <= this.sharpness) {
+      this.sharpness -= sharpnessCost
       textToAdd += str[i]
     } else {
-      textToAdd += str[i]
+      textToAdd += ' '
     }
   }
-
-  textToAdd += new Array(str.length - textToAdd.length).fill(' ').join('')
 
   paper.addText(textToAdd, paper.text.length)
 }
