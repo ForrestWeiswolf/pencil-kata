@@ -123,10 +123,16 @@ describe('Pencil', () => {
       expect(fakePaper.addText.getCall(0).args[0]).to.equal('  ')
     })
 
-    it('Won\'t end up with negative sharpness', () => {
+    it('Won\'t end up with negative sharpness from writing while dull', () => {
       pencil = new Pencil(0)
       pencil.write('aA', fakePaper)
       expect(pencil.sharpness).to.equal(0)
+    })
+
+    it('Can go dull in the middle of writing', () => {
+      pencil = new Pencil(2)
+      pencil.write('If', fakePaper)
+      expect(fakePaper.addText.getCall(0).args[0]).to.equal('I ')
     })
   })
 })
