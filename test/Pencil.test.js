@@ -4,7 +4,14 @@ const sinon = require('sinon')
 
 describe('Pencil', () => {
   let pencil
+  let fakePaper
   beforeEach(() => {
+    fakePaper = {
+      addText: sinon.fake(),
+      removeText: sinon.fake(),
+      text: ''
+    }
+
     pencil = new Pencil()
   })
 
@@ -45,15 +52,6 @@ describe('Pencil', () => {
   })
 
   describe('.write', () => {
-    let fakePaper
-    beforeEach(() => {
-      fakePaper = {
-        addText: sinon.fake(),
-        removeText: sinon.fake(),
-        text: ''
-      }
-    })
-
     it('is a method', () => {
       expect(pencil.write).to.be.a('function')
     })
@@ -152,6 +150,12 @@ describe('Pencil', () => {
 
     it('Returns the pencil (for chaining)', () => {
       expect(pencil.write('If there had been music...', fakePaper)).to.equal(pencil)
+    })
+  })
+
+  describe('.sharpen', ()=> {
+    it('Is a method', () => {
+      expect(pencil.sharpen).to.be.a('function')
     })
   })
 })
