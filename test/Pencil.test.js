@@ -157,5 +157,11 @@ describe('Pencil', () => {
     it('Is a method', () => {
       expect(pencil.sharpen).to.be.a('function')
     })
+
+    it('Sets the pencil\'s sharpness equal to its durability', () => {
+      pencil.write('but no, of curse there was no music.', fakePaper)
+      pencil.sharpen()
+      expect(pencil.sharpness).to.equal(pencil.durability)
+    })
   })
 })

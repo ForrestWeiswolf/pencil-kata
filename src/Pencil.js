@@ -52,6 +52,7 @@ Pencil.prototype.write = function (str, paper) {
  * Sharpen the pencil, resettting its sharpness to a value equal to its durability.
  */
 Pencil.prototype.sharpen = function(){
+  this.sharpness = this.durability
 }
 
 module.exports = Pencil
