@@ -37,6 +37,8 @@ Pencil.prototype.write = function (str, paper) {
   }
 
   paper.addText(textToAdd, paper.text.length)
+
+  return this
 }
 
 module.exports = Pencil
