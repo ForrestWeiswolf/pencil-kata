@@ -5,7 +5,7 @@
  * @param {number} durability The maximum sharpness of the pencil (which sharpness will be reset to when it is sharpened).
  * @property {number} sharpness The sharpness of the pencil - how many characters it can write before it goes dull.
  */
-function Pencil(durability = 1000, length=100) {
+function Pencil(durability = 1000, length = 100) {
   this.durability = durability
   this.sharpness = durability
   this.length = length
@@ -49,11 +49,15 @@ Pencil.prototype.write = function (str, paper) {
 }
 
 /**
- * Sharpen the pencil, resettting its sharpness to a value equal to its durability.
+ * Sharpen the pencil.
+ * If the pencil's length is at least 1, resets its sharpness to equal its durability, and reduces length by 1.
+ * If the pencil's length is 0, has no effect
  */
-Pencil.prototype.sharpen = function(){
-  this.sharpness = this.durability
-  this.length--
+Pencil.prototype.sharpen = function () {
+  if (this.length > 0) {
+    this.sharpness = this.durability
+    this.length--
+  }
 }
 
 module.exports = Pencil

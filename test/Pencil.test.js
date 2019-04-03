@@ -182,5 +182,13 @@ describe('Pencil', () => {
       pencil.sharpen()
       expect(pencil.length).to.equal(initialLength - 1)
     })
+
+    it('Has no effect when Pencil\'s length is 0', () => {
+      pencil = new Pencil(10, 0)
+      pencil.write('In fact there were none of these things, and so the silence remained.', fakePaper)
+      pencil.sharpen()
+      expect(pencil.length).to.equal(0)
+      expect(pencil.sharpness).to.equal(0)
+    })
   })
 })
