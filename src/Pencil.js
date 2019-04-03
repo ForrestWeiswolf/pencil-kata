@@ -5,10 +5,10 @@
  * @param {number} durability The maximum sharpness of the pencil (which sharpness will be reset to when it is sharpened).
  * @property {number} sharpness The sharpness of the pencil - how many characters it can write before it goes dull.
  */
-function Pencil(durability = 1000) {
+function Pencil(durability = 1000, length=100) {
   this.durability = durability
   this.sharpness = durability
-  this.length = 100
+  this.length = length
 }
 
 // Reduce sharpness by 2 if str.toUpperCase() === str, otherwise reduce by 1

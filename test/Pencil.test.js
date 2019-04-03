@@ -43,6 +43,18 @@ describe('Pencil', () => {
     })
   })
 
+  describe('length', () => {
+    it('can be passed as the second argument to the constructor', () => {
+      expect(new Pencil(22, 12).length).to.equal(12)
+      expect(new Pencil(90, 14).length).to.equal(14)
+    })
+
+    it('defaults to 100', () => {
+      expect(pencil.length).to.equal(100)
+    })
+  })
+
+
   describe('sharpness', () => {
     it('is initially equal to durability', () => {
       expect(pencil.durability).to.equal(pencil.sharpness)
