@@ -58,6 +58,8 @@ Pencil.prototype.sharpen = function () {
     this.sharpness = this.durability
     this.length--
   }
+
+  return this
 }
 
 module.exports = Pencil

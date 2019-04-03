@@ -190,5 +190,9 @@ describe('Pencil', () => {
       expect(pencil.length).to.equal(0)
       expect(pencil.sharpness).to.equal(0)
     })
+
+    it('Returns the pencil (for chaining)', () => {
+      expect(pencil.sharpen()).to.equal(pencil)
+    })
   })
 })
