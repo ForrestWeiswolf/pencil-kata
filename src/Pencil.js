@@ -65,6 +65,8 @@ Pencil.prototype.sharpen = function () {
 /**
  * Use the pencil to erase text
  */
-Pencil.prototype.erase = function () {}
+Pencil.prototype.erase = function () {
+  return this
+}
 
 module.exports = Pencil

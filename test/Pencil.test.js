@@ -200,5 +200,9 @@ describe('Pencil', () => {
     it('Is a method', () => {
       expect(pencil.erase).to.be.a('function')
     })
+
+    it('Returns the pencil (for chaining)', () => {
+      expect(pencil.erase()).to.equal(pencil)
+    })
   })
 })
