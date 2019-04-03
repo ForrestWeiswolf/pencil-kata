@@ -134,5 +134,22 @@ describe('Pencil', () => {
       pencil.write('If', fakePaper)
       expect(fakePaper.addText.getCall(0).args[0]).to.equal('I ')
     })
+
+    describe('When sharpness is 1', () => {
+      /* The spec isn't clear on what to do about this,
+      but this option seems slightly closer to the description than the alternative */
+      it('Will skip over an uppercase letter to write a lowercase one', () => {
+        pencil = new Pencil(1)
+        pencil.write('If', fakePaper)
+        expect(fakePaper.addText.getCall(0).args[0]).to.equal(' f')
+      })
+
+      /* Here's the test for the other possibility */
+      // it('Won\'t skip over an uppercase letter to write a lowercase one', () => {
+      //   pencil = new Pencil(1)
+      //   pencil.write('If', fakePaper)
+      //   expect(fakePaper.addText.getCall(0).args[0]).to.equal(' ')
+      // })
+    })
   })
 })

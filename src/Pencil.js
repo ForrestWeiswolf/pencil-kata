@@ -19,13 +19,15 @@ Pencil.prototype.write = function (str, paper) {
     if (this.sharpness === 0) {
       break
     }
-    
+
     // Reduce sharpness by 2 if str.toUpperCase() === str, otherwise reduce by 1
     // (Non-letter characters will reduce durability by 1 here)
     // Comparing str.toLowerCase() to str is significantly faster than using a regex
-    if (str[i].toLowerCase() !== str[i]) {
+    if ((this.sharpness > 1) && str[i].toLowerCase() !== str[i]) {
       this.sharpness -= 2
       textToAdd += str[i]
+    } else if (str[i].toLowerCase() !== str[i]) {
+      textToAdd += ' '
     } else if (isntSpace.test(str[i])) {
       this.sharpness -= 1
       textToAdd += str[i]
