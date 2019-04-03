@@ -163,5 +163,12 @@ describe('Pencil', () => {
       pencil.sharpen()
       expect(pencil.sharpness).to.equal(pencil.durability)
     })
+
+    it('Reduces the pencil\'s length by 1', () => {
+      const initialLength = pencil.length
+      pencil.write('but no, of curse there was no music.', fakePaper)
+      pencil.sharpen()
+      expect(pencil.length).to.equal(initialLength - 1)
+    })
   })
 })

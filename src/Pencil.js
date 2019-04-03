@@ -53,6 +53,7 @@ Pencil.prototype.write = function (str, paper) {
  */
 Pencil.prototype.sharpen = function(){
   this.sharpness = this.durability
+  this.length--
 }
 
 module.exports = Pencil
