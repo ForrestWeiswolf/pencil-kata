@@ -195,4 +195,10 @@ describe('Pencil', () => {
       expect(pencil.sharpen()).to.equal(pencil)
     })
   })
+
+  describe('.erase', ()=> {
+    it('Is a method', () => {
+      expect(pencil.erase).to.be.a('function')
+    })
+  })
 })
