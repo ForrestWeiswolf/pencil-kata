@@ -22,6 +22,13 @@ function getSharpnessCost(char) {
   }
 }
 
+/**
+ * Writes text on a sheet of paper.
+ * Writing an uppercase character will reduce the pencil's sharpness by two; writing other characters will redecu sharpness by 1, except for whitespace which does not cost any sharpness.
+ * If it isn't sharp enought to write a character, it will write a space instead.
+ * @param {string} str The text to write.
+ * @param {Paper} paper The paper to write on
+ */
 Pencil.prototype.write = function (str, paper) {
   let textToAdd = ''
   let sharpnessCost
