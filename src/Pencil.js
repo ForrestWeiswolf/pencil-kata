@@ -6,7 +6,7 @@
  * @property {number} sharpness The sharpness of the pencil - how many characters it can write before it goes dull.
  * @property {number} eraserDurability The number of characters the eraser can erase before running out.
  */
- function Pencil(durability = 1000, length = 100, eraserDurability=1000) {
+function Pencil(durability = 1000, length = 100, eraserDurability = 1000) {
   this.durability = durability
   this.sharpness = durability
   this.length = length
@@ -65,6 +65,17 @@ Pencil.prototype.sharpen = function () {
   return this
 }
 
+function countWhitespace(str) {
+  // Think this will be faster than using a regex to get all of the spaces or split and filter (and more legible than the regex at least), but haven't benchmarked yet
+  let result = 0
+  for (let i = 0; i < str.length; i++) {
+    if(/\s/.test(str[i])){
+      result ++
+    }
+  }
+  return result
+}
+
 /**
  * Use the pencil to erase text
  * @param {string} textToErase The text to erase
@@ -75,7 +86,7 @@ Pencil.prototype.erase = function (textToErase, paper) {
   const end = start + textToErase.length
 
   paper.removeText(start, end)
-  this.eraserDurability -= (end-start)
+  this.eraserDurability -= textToErase.length - countWhitespace(textToErase)
 
   return this
 }

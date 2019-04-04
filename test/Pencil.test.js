@@ -242,6 +242,14 @@ describe('Pencil', () => {
       expect(pencil.eraserDurability).to.equal(98)
     })
 
+    it('Erasing whitespace doesn\'t decrease durability', () => {
+      pencil = new Pencil(30, 20, 100)
+      fakePaper.text = ' to the larger, hollow one.'
+
+      pencil.erase('to the', fakePaper)
+      expect(pencil.eraserDurability).to.equal(95)
+    })
+
     it('Returns the pencil (for chaining)', () => {
       expect(pencil.erase('', fakePaper)).to.equal(pencil)
     })
