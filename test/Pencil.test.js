@@ -201,8 +201,14 @@ describe('Pencil', () => {
       expect(pencil.erase).to.be.a('function')
     })
 
+    it('Calls the removeText method of a passed Paper', () => {
+      pencil.write('Inside the Waystone a pair of men huddled at one corner of the bar.', fakePaper)
+      pencil.erase(1, 12, fakePaper)
+      expect(fakePaper.removeText.called).to.equal(true)
+    })
+
     it('Returns the pencil (for chaining)', () => {
-      expect(pencil.erase()).to.equal(pencil)
+      expect(pencil.erase(1, 12, fakePaper)).to.equal(pencil)
     })
   })
 })
