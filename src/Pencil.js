@@ -4,11 +4,13 @@
  * @param {number} length The length of the pencil - how many times it can be sharpened.
  * @param {number} durability The maximum sharpness of the pencil (which sharpness will be reset to when it is sharpened).
  * @property {number} sharpness The sharpness of the pencil - how many characters it can write before it goes dull.
+ * @property {number} eraserDurability The number of characters the eraser can erase before running out.
  */
 function Pencil(durability = 1000, length = 100) {
   this.durability = durability
   this.sharpness = durability
   this.length = length
+  this.eraserDurability = 1000
 }
 
 /* Helper function for Pencil.write.

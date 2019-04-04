@@ -28,6 +28,10 @@ describe('Pencil', () => {
     expect(pencil).to.haveOwnProperty('sharpness')
   })
 
+  it('has a .eraserDurability property', () => {
+    expect(pencil).to.haveOwnProperty('eraserDurability')
+  })
+
   it('has a .length property', () => {
     expect(pencil).to.haveOwnProperty('length')
   })
