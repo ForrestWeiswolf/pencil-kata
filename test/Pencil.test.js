@@ -58,6 +58,12 @@ describe('Pencil', () => {
     })
   })
 
+  describe('eraserDurability', () => {
+    it('can be passed as the third argument to the constructor', () => {
+      expect(new Pencil(1, 2, 20).eraserDurability).to.equal(20)
+      expect(new Pencil(1, 2, 22).eraserDurability).to.equal(22)
+    })
+  })
 
   describe('sharpness', () => {
     it('is initially equal to durability', () => {

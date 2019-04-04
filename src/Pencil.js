@@ -6,11 +6,11 @@
  * @property {number} sharpness The sharpness of the pencil - how many characters it can write before it goes dull.
  * @property {number} eraserDurability The number of characters the eraser can erase before running out.
  */
-function Pencil(durability = 1000, length = 100) {
+ function Pencil(durability = 1000, length = 100, eraserDurability) {
   this.durability = durability
   this.sharpness = durability
   this.length = length
-  this.eraserDurability = 1000
+  this.eraserDurability = eraserDurability
 }
 
 /* Helper function for Pencil.write.
