@@ -31,8 +31,9 @@ function getSharpnessCost(char) {
  * If it isn't sharp enought to write a character, it will write a space instead.
  * @param {string} str The text to write.
  * @param {Paper} paper The paper to write on
+ * @param {number} [index=paper.text.length] Index to start writing at - defaults to writing at the end of the paper's current text
  */
-Pencil.prototype.write = function (str, paper) {
+Pencil.prototype.write = function (str, paper, index=paper.text.length) {
   let textToAdd = ''
   let sharpnessCost
 
@@ -46,7 +47,7 @@ Pencil.prototype.write = function (str, paper) {
     }
   }
 
-  paper.addText(textToAdd, paper.text.length)
+  paper.addText(textToAdd, index)
 
   return this
 }

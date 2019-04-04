@@ -178,6 +178,13 @@ describe('Pencil', () => {
     //   expect(fakePaper.addText.getCall(0).args[0]).to.equal(' ')
     // })
 
+    it('Can optionally be instructed to write in the middle rather than at the end of the current text', () => {
+      fakePaper.text = 'If       had been music...'
+      pencil.write('there', fakePaper, 3)
+      // Second argument passed to paper.addText is the index to add it at
+      expect(fakePaper.addText.getCall(0).args[1]).to.equal(3)
+    })
+
     it('Returns the pencil (for chaining)', () => {
       expect(pencil.write('If there had been music...', fakePaper)).to.equal(pencil)
     })
