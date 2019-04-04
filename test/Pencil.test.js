@@ -250,6 +250,14 @@ describe('Pencil', () => {
       expect(pencil.eraserDurability).to.equal(95)
     })
 
+    it('Can\'t erase if eraserDuarbility is 0', () => {
+      pencil = new Pencil(30, 20, 0)
+      fakePaper.text = 'It made an alloy of sorts, a counterpoint.'
+
+      pencil.erase('It', fakePaper)
+      expect(fakePaper.removeText.called).to.equal(false)
+    })
+
     it('Returns the pencil (for chaining)', () => {
       expect(pencil.erase('', fakePaper)).to.equal(pencil)
     })

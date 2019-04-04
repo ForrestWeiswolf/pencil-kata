@@ -69,8 +69,8 @@ function countWhitespace(str) {
   // Think this will be faster than using a regex to get all of the spaces or split and filter (and more legible than the regex at least), but haven't benchmarked yet
   let result = 0
   for (let i = 0; i < str.length; i++) {
-    if(/\s/.test(str[i])){
-      result ++
+    if (/\s/.test(str[i])) {
+      result++
     }
   }
   return result
@@ -82,11 +82,13 @@ function countWhitespace(str) {
  * @param {Paper} paper The paper to erase it from
  */
 Pencil.prototype.erase = function (textToErase, paper) {
-  const start = paper.text.lastIndexOf(textToErase)
-  const end = start + textToErase.length
+  if (this.eraserDurability > 0) {
+    const start = paper.text.lastIndexOf(textToErase)
+    const end = start + textToErase.length
 
-  paper.removeText(start, end)
-  this.eraserDurability -= textToErase.length - countWhitespace(textToErase)
+    paper.removeText(start, end)
+    this.eraserDurability -= textToErase.length - countWhitespace(textToErase)
+  }
 
   return this
 }
