@@ -66,7 +66,9 @@ Pencil.prototype.sharpen = function () {
 }
 
 /**
- * Use the pencil to erase text
+ * Use the pencil to erase the last instance of the specified text from the paper.
+ * Decreases eraserDurability for every non-whitespace character erased.
+ * Text is erased from the end first; thus if a pencil's eraser has remaining durability of three, and it is instructed to erase the word "Bill" from "Buffalo Bill", the text remaining on the paper is "Buffalo B   ".
  * @param {string} textToErase The text to erase
  * @param {Paper} paper The paper to erase it from
  */

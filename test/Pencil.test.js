@@ -5,6 +5,10 @@ const sinon = require('sinon')
 describe('Pencil', () => {
   let pencil
   let fakePaper
+  /* Paper and Pencil are separate classes. We're going to make a fake paper here,
+  so that any problems with the actual Paper class won't affect the tests for *Pencil*.
+  It does, however, assume that the Paper's API will remain consistent.
+  */
   beforeEach(() => {
     fakePaper = {
       addText: sinon.fake(),
