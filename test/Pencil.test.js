@@ -63,6 +63,10 @@ describe('Pencil', () => {
       expect(new Pencil(1, 2, 20).eraserDurability).to.equal(20)
       expect(new Pencil(1, 2, 22).eraserDurability).to.equal(22)
     })
+
+    it('defaults to 1000', () => {
+      expect(pencil.eraserDurability).to.equal(1000)
+    })
   })
 
   describe('sharpness', () => {
