@@ -11,9 +11,10 @@ function Pencil(durability = 1000, length = 100) {
   this.length = length
 }
 
-// Reduce sharpness by 2 if str.toUpperCase() === str, otherwise reduce by 1
-// (Non-letter characters will reduce durability by 1 here)
-// Comparing str.toLowerCase() to str is significantly faster than using a regex
+/* Helper function for Pencil.write.
+Reduce sharpness by 2 if str.toUpperCase() === str, otherwise reduce by 1
+(Non-letter characters will reduce durability by 1 here)
+Comparing str.toLowerCase() to str is significantly faster than using a regex */
 function getSharpnessCost(char) {
   if (char.toLowerCase() !== char) {
     return 2
