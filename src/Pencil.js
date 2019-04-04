@@ -73,7 +73,10 @@ Pencil.prototype.sharpen = function () {
 Pencil.prototype.erase = function (textToErase, paper) {
   const start = paper.text.lastIndexOf(textToErase)
   const end = start + textToErase.length
+
   paper.removeText(start, end)
+  this.eraserDurability -= (end-start)
+
   return this
 }
 

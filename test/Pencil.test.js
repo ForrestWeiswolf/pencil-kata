@@ -234,6 +234,14 @@ describe('Pencil', () => {
       expect(fakePaper.removeText.getCall(0).args[0]).to.equal(fakePaper.text.lastIndexOf('the'))
     })
 
+    it('Decreases eraserDurability by 1 for each character erased', () => {
+      pencil = new Pencil(30, 20, 100)
+      fakePaper.text = ' to the larger, hollow one.'
+
+      pencil.erase('to', fakePaper)
+      expect(pencil.eraserDurability).to.equal(98)
+    })
+
     it('Returns the pencil (for chaining)', () => {
       expect(pencil.erase('', fakePaper)).to.equal(pencil)
     })
