@@ -259,6 +259,16 @@ describe('Pencil', () => {
       expect(lengthOfErased).to.equal(2)
     })
 
+    it('Erases starting from the end', () => {
+      pencil = new Pencil(30, 20, 2)
+      fakePaper.text = 'If you listened for an hour,'
+      pencil.erase('hour,', fakePaper)
+
+      // check that it erased the last two characters
+      expect(fakePaper.removeText.getCall(0).args[0]).to.equal(fakePaper.text.length - 2)
+      expect(fakePaper.removeText.getCall(0).args[1]).to.equal(fakePaper.text.length)
+    })
+
     it('Returns the pencil (for chaining)', () => {
       expect(pencil.erase('', fakePaper)).to.equal(pencil)
     })
