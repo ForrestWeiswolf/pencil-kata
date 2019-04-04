@@ -69,7 +69,7 @@ Pencil.prototype.sharpen = function () {
  * @param {Paper} paper The paper to erase it from
  */
 Pencil.prototype.erase = function (textToErase, paper) {
-  const start = paper.text.indexOf(textToErase)
+  const start = paper.text.lastIndexOf(textToErase)
   const end = start + textToErase.length
   paper.removeText(start, end)
   return this

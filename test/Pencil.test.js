@@ -214,6 +214,12 @@ describe('Pencil', () => {
       expect(fakePaper.removeText.getCall(0).args[1]).to.equal(10)
     })
 
+    it('Erases last instance of that text if there is more than one on the paper', () => {
+      fakePaper.text = 'In doing these they added a small, sullen silence'
+      pencil.erase('the', fakePaper)
+      expect(fakePaper.removeText.getCall(0).args[0]).to.equal(fakePaper.text.lastIndexOf('the'))
+    })
+
     it('Returns the pencil (for chaining)', () => {
       expect(pencil.erase('', fakePaper)).to.equal(pencil)
     })
