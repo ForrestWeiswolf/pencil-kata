@@ -250,12 +250,13 @@ describe('Pencil', () => {
       expect(pencil.eraserDurability).to.equal(95)
     })
 
-    it('Can\'t erase if eraserDuarbility is 0', () => {
-      pencil = new Pencil(30, 20, 0)
-      fakePaper.text = 'It made an alloy of sorts, a counterpoint.'
+    it('Can run out of eraser in the middle of erasing', () => {
+      pencil = new Pencil(30, 20, 2)
+      fakePaper.text = 'The third silence was not an easy thing to notice.'
 
-      pencil.erase('It', fakePaper)
-      expect(fakePaper.removeText.called).to.equal(false)
+      pencil.erase('The', fakePaper)
+      const lengthOfErased = fakePaper.removeText.getCall(0).args[1] - fakePaper.removeText.getCall(0).args[0]
+      expect(lengthOfErased).to.equal(2)
     })
 
     it('Returns the pencil (for chaining)', () => {

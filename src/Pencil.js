@@ -65,30 +65,31 @@ Pencil.prototype.sharpen = function () {
   return this
 }
 
-function countWhitespace(str) {
-  // Think this will be faster than using a regex to get all of the spaces or split and filter (and more legible than the regex at least), but haven't benchmarked yet
-  let result = 0
-  for (let i = 0; i < str.length; i++) {
-    if (/\s/.test(str[i])) {
-      result++
-    }
-  }
-  return result
-}
-
 /**
  * Use the pencil to erase text
  * @param {string} textToErase The text to erase
  * @param {Paper} paper The paper to erase it from
  */
 Pencil.prototype.erase = function (textToErase, paper) {
-  if (this.eraserDurability > 0) {
-    const start = paper.text.lastIndexOf(textToErase)
-    const end = start + textToErase.length
+  const start = paper.text.lastIndexOf(textToErase)
+  let end
 
-    paper.removeText(start, end)
-    this.eraserDurability -= textToErase.length - countWhitespace(textToErase)
+  for (let i = 0; i < textToErase.length; i++) {
+    if (this.eraserDurability === 0) {
+      end = start + i
+      break
+    }
+
+    if (/\S/.test(textToErase[i])) {
+      this.eraserDurability -= 1
+    }
   }
+
+  if(end === undefined){
+    end = start + textToErase.length
+  }
+
+  paper.removeText(start, end)
 
   return this
 }
