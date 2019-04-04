@@ -1,15 +1,17 @@
 {
-  "name": "pillar",
+  "name": "pencil-durability-kata",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "document": "jsdoc src/*.js -d ./docs -c jsdocConfig.json -R README.md -P package.json"
   },
   "author": "Forrest Wolf <forrest.weiswolf@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
+    "jsdoc": "^3.5.5",
     "mocha": "^6.0.2",
     "sinon": "^7.3.1"
   }
