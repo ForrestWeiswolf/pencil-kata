@@ -1,3 +1,28 @@
+# Notes
+
+## Installation
+As usual with Node.js, `npm install` the dependencies before running any of this code. I assume that you have Node and npm on your computer.
+
+## Scripts
+`npm t` will run the tests. `npm run document` will generate documentation using jsdoc.
+
+## Design choices
+The Pencil methods assumes that the Paper API will work i a certain way; however, the Pencil tests use a mock Paper so that they won't fail if it hasn't yet been implemented.
+
+I've opted to include functions that are only used by a single class in the same file as it; it this were a larger project and I thought there was a chance of re-using them, I'd have moved them to a utils file.
+
+The Paper class is responsible for determining what happens when newly written text overlaps existing text, and in general, the Pencil calls methods on the Paper to add or remove text, rather than altering its text directly.
+
+I avoided regexes in a few cases do to the performance benefits of doing so, but used `/\s/` to test whether characters were whitespace, since the alternative would be signifacantly more verbose and less clear. If this were for a use case that emphasized (or de-emphasized) performance, this could be changed, but as it was, I used my judgement on a case-by-case basis as to whether the convenience was worth the performance cost.
+
+A few points where the spec was not fully specific and I made judgement calls on how this should work, or where I've departed from the exact wording of the spec in favor of what I think makes sense given the intention of the Kata:
+* A pencil can still write whitespace while dull - this makes sense, insofar as the idea of writing whitespace makes sense at all.
+* If you try to write a different whitespace over one that already exists, the old one will remain on the paper.
+* You can erase whitespace.
+
+All of these relate to quirks of how *strings* differ from real paper - a more realistic Paper might be an array of lines, with the pencil, e.g. simply switching to writing on the next line, instead of writing a newline character. But that's not what the spec called for.
+
+
 # Pencil Durability Kata
 The purpose of the Pencil Durability Kata is to write code to simulate, first coarsely and then more faithfully, an ordinary graphite pencil. It includes writing and editing text, point degradation, using the eraser, and sharpening the pencil. The point of this kata is to provide a larger-than-trivial exercise that can be used to practice TDD. A significant portion of the effort will be in determining which tests should be written and, more importantly, written next.
 
