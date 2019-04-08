@@ -4,6 +4,10 @@ const {
   expect
 } = require('chai')
 
+/*
+Since this kata is primarily about TDD with unit testing, these integration tests are pretty basic - I just used the examples from the readme.
+*/
+
 describe('Writing', () => {
   it('Writes on paper', () => {
     const paper = new Paper()
